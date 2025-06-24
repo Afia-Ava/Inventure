@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="hero">
@@ -14,61 +15,186 @@
       <div class="logo">Inventure</div>
       <div class="navbar-actions">
         <a href="#join" class="join-btn">Join</a>
-        <div class="menu-icon" tabindex="0" aria-label="Open menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+        <!-- 3-line (hamburger) icon button -->
+        <button class="menu-icon" id="menuToggle" tabindex="0" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;margin-left:16px;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;height:40px;width:40px;">
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+        </button>
       </div>
     </nav>
     <div class="hero-content">
       <h1>Welcome to Inventure</h1>
       <p>A vibrant community where young builders connect, share, and grow together.</p>
       <a href="#join" class="cta-btn">Get Started</a>
-      <div class="builder-types">
-        <span class="builder-badge">Founders</span>
-        <span class="builder-badge">Engineers</span>
-        <span class="builder-badge">Designers</span>
-        <span class="builder-badge">Product Managers</span>
-        <span class="builder-badge">Marketers</span>
-        <span class="builder-badge">Operators</span>
-      </div>
     </div>
   </header>
-  <section class="about" id="about">
-    <h2>About Inventure</h2>
-    <p>Inventure is a space for ambitious young people to meet, attend events, share opportunities, and book coffee chats with like-minded peers.</p>
-  </section>
-  <section class="features" id="features">
-    <h2>What You Can Do</h2>
-    <div class="features-list">
-      <div class="feature">
-        <h3>Attend Meetings</h3>
-        <p>Join regular meetups and workshops to learn and collaborate.</p>
+  <section class="are-you-section">
+    <div class="are-you-content">
+      <div class="are-you-left">
+        <h2 class="are-you-title">Are you a...</h2>
+        <div class="are-you-badges">
+          <span class="are-you-badge">Hacker</span>
+          <span class="are-you-badge">Maker</span>
+          <span class="are-you-badge">Founder</span>
+          <span class="are-you-badge">Storyteller</span>
+          <span class="are-you-badge">Explorer</span>
+          <span class="are-you-badge">Filmmaker</span>
+          <span class="are-you-badge">Tinkerer</span>
+          <span class="are-you-badge">Doer</span>
+        </div>
       </div>
-      <div class="feature">
-        <h3>Share Opportunities</h3>
-        <p>Discover and share internships, projects, and events.</p>
-      </div>
-      <div class="feature">
-        <h3>Book Coffee Chats</h3>
-        <p>Connect 1:1 with other members for meaningful conversations.</p>
+      <div class="are-you-carousel">
+        <img src="carousel1.jpg" alt="Community highlight" id="areYouCarouselImg" />
       </div>
     </div>
   </section>
-  <section class="community" id="community">
-    <h2>Community Highlights</h2>
-    <div class="testimonials">
-      <blockquote>“Inventure helped me find my co-founder!”</blockquote>
-      <blockquote>“The coffee chats are a game changer.”</blockquote>
+  <div class="main-content-bg">
+    <section class="features-section" id="features">
+      <h2 class="features-title">Key Features</h2>
+      <div class="features-desc">
+        Inventure offers a range of features designed to help young builders connect, learn, and grow.
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">👥</div>
+          <h3>Community Forums</h3>
+          <p>Engage in discussions, share insights, and collaborate with fellow builders.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🌐</div>
+          <h3>Global Network</h3>
+          <p>Connect with professionals from around the world, expanding your network and opportunities.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎓</div>
+          <h3>Mentorship Programs</h3>
+          <p>Access guidance and support from experienced mentors in your field.</p>
+        </div>
+      </div>
+    </section>
+    <section class="community-section" id="community">
+      <h2 class="community-title">Community Highlights</h2>
+      <div class="community-grid">
+        <div class="community-card">
+          <img src="plant.jpg" alt="Project Showcase" />
+          <div class="community-card-content">
+            <h4>Project Showcase</h4>
+            <p>Highlighting innovative projects and startups from our community members.</p>
+          </div>
+        </div>
+        <div class="community-card">
+          <img src="design-challenge.jpg" alt="Design Challenges" />
+          <div class="community-card-content">
+            <h4>Design Challenges</h4>
+            <p>Participate in design challenges to hone your skills and gain recognition.</p>
+          </div>
+        </div>
+        <div class="community-card">
+          <img src="techtalk.jpg" alt="Tech Talks" />
+          <div class="community-card-content">
+            <h4>Tech Talks</h4>
+            <p>Attend talks and workshops led by industry experts and thought leaders.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <section class="join-section">
+    <div class="join-section-inner">
+      <h2>Ready to Join?</h2>
+      <a class="join-section-btn" href="#join">Sign Up Now</a>
     </div>
-  </section>
-  <section class="join" id="join">
-    <h2>Ready to Join?</h2>
-    <a href="#" class="cta-btn">Sign Up Now</a>
   </section>
   <footer>
-    <p>&copy; 2025 Inventure. All rights reserved.</p>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">
+  Inventure
+</div>
+        <div class="footer-social">
+          <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+            <!-- Twitter SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.924c-.793.352-1.646.59-2.54.698a4.48 4.48 0 0 0 1.964-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03a12.72 12.72 0 0 1-9.23-4.68 4.48 4.48 0 0 0 1.39 5.98A4.44 4.44 0 0 1 2 9.13v.057a4.48 4.48 0 0 0 3.6 4.39c-.4.11-.82.17-1.25.17-.31 0-.6-.03-.89-.08a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.07a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.77 0-.19 0-.37-.01-.56A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.6.71Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+            <!-- LinkedIn SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.47-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/></svg>
+          </a>
+          <a href="mailto:hello@inventure.com" aria-label="Email">
+            <!-- Email SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4v-9.99l8 6.99 8-6.99V18z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#join">Join</a>
+      </nav>
+      <div class="footer-contact">
+        <span><strong>Contact:</strong></span>
+        <span>Email: <a href="mailto:hello@inventure.com">hello@inventure.com</a></span>
+        <span>Location: Remote / Global</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Inventure. All rights reserved.
+    </div>
   </footer>
+
+  <!-- Overlay menu -->
+  <div id="overlayMenu" class="overlay-menu" style="display:none;">
+    <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
+    <ul class="overlay-menu-list">
+      <li>
+        <a href="#">Home</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Explore</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Create</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Communities</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Dashboard</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Messages</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Notifications</a>
+        <span class="plus">+</span>
+      </li>
+    </ul>
+  </div>
+
+  <script>
+    // Simple overlay menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const overlayClose = document.getElementById('overlayClose');
+    menuToggle.addEventListener('click', () => {
+      overlayMenu.style.display = 'flex';
+    });
+    overlayClose.addEventListener('click', () => {
+      overlayMenu.style.display = 'none';
+    });
+    // Optional: close overlay on ESC key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') overlayMenu.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
