@@ -116,19 +116,19 @@
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Explore</a>
+        <a href="explore.html">Explore</a>
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Create</a>
+        <a href="create.html">Create</a>
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Communities</a>
+        <a href="communities.html">Communities</a>
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Dashboard</a>
+        <a href="dashboard.html">Dashboard</a>
         <span class="plus">+</span>
       </li>
       <li>
@@ -157,6 +157,14 @@
       link.addEventListener('click', function(e) {
         overlayMenu.style.display = 'none';
         const href = this.getAttribute('href');
+        // Open explore.html if Explore is clicked
+        if (this.textContent.trim().startsWith('Explore')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'explore.html';
+          }, 180);
+          return;
+        }
         // Open dashboard.html if Dashboard is clicked
         if (this.textContent.trim().startsWith('Dashboard')) {
           e.preventDefault();

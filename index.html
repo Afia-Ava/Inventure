@@ -51,51 +51,53 @@
       </div>
     </div>
   </section>
-  <!-- Live/Trending Projects Section -->
+  <!-- Remove Trending Projects Section from Home Page -->
+  <!--
   <section class="trending-projects-section">
-  <h2 class="trending-projects-title" style="font-size:2rem;font-weight:700;letter-spacing:0.5px;">Trending Projects</h2>
-  <div class="trending-projects-desc">What’s being built right now.</div>
-  <div class="trending-carousel" id="trendingCarousel">
-    <button class="trending-carousel-nav trending-carousel-nav-left" id="trendingPrev" aria-label="Previous projects">&lsaquo;</button>
-    <div class="trending-project-card large">
-      <div class="trending-project-img-holder">
-        <img src="project1.jpg" alt="AI Note Taker" />
+    <h2 class="trending-projects-title" style="font-size:2rem;font-weight:700;letter-spacing:0.5px;">Trending Projects</h2>
+    <div class="trending-projects-desc">What’s being built right now.</div>
+    <div class="trending-carousel" id="trendingCarousel">
+      <button class="trending-carousel-nav trending-carousel-nav-left" id="trendingPrev" aria-label="Previous projects">&lsaquo;</button>
+      <div class="trending-project-card large">
+        <div class="trending-project-img-holder">
+          <img src="project1.jpg" alt="AI Note Taker" />
+        </div>
+        <div class="trending-project-name large">AI Note Taker</div>
+        <div class="trending-project-desc">AI-powered meeting notes.</div>
       </div>
-      <div class="trending-project-name large">AI Note Taker</div>
-      <div class="trending-project-desc">AI-powered meeting notes.</div>
-    </div>
-    <div class="trending-project-card large">
-      <div class="trending-project-img-holder">
-        <img src="project2.jpg" alt="Smart Plant Monitor" />
+      <div class="trending-project-card large">
+        <div class="trending-project-img-holder">
+          <img src="project2.jpg" alt="Smart Plant Monitor" />
+        </div>
+        <div class="trending-project-name large">Smart Plant Monitor</div>
+        <div class="trending-project-desc">Monitor your plants remotely.</div>
       </div>
-      <div class="trending-project-name large">Smart Plant Monitor</div>
-      <div class="trending-project-desc">Monitor your plants remotely.</div>
-    </div>
-    <div class="trending-project-card large">
-      <div class="trending-project-img-holder">
-        <img src="project3.jpg" alt="Peer Tutoring App" />
+      <div class="trending-project-card large">
+        <div class="trending-project-img-holder">
+          <img src="project3.jpg" alt="Peer Tutoring App" />
+        </div>
+        <div class="trending-project-name large">Peer Tutoring App</div>
+        <div class="trending-project-desc">Connect for student help.</div>
       </div>
-      <div class="trending-project-name large">Peer Tutoring App</div>
-      <div class="trending-project-desc">Connect for student help.</div>
-    </div>
-    <div class="trending-project-card large">
-      <div class="trending-project-img-holder">
-        <img src="project4.jpg" alt="Robotics Kit" />
+      <div class="trending-project-card large">
+        <div class="trending-project-img-holder">
+          <img src="project4.jpg" alt="Robotics Kit" />
+        </div>
+        <div class="trending-project-name large">Robotics Kit</div>
+        <div class="trending-project-desc">Build and code robots.</div>
       </div>
-      <div class="trending-project-name large">Robotics Kit</div>
-      <div class="trending-project-desc">Build and code robots.</div>
-    </div>
-    <div class="trending-project-card large">
-      <div class="trending-project-img-holder">
-        <img src="project5.jpg" alt="Eco Tracker" />
+      <div class="trending-project-card large">
+        <div class="trending-project-img-holder">
+          <img src="project5.jpg" alt="Eco Tracker" />
+        </div>
+        <div class="trending-project-name large">Eco Tracker</div>
+        <div class="trending-project-desc">Track your carbon footprint.</div>
       </div>
-      <div class="trending-project-name large">Eco Tracker</div>
-      <div class="trending-project-desc">Track your carbon footprint.</div>
+      <!-- Add more project cards as needed -->
+      <!-- <button class="trending-carousel-nav" id="trendingNext" aria-label="Next projects">&rsaquo;</button>
     </div>
-    <!-- Add more project cards as needed -->
-    <button class="trending-carousel-nav" id="trendingNext" aria-label="Next projects">&rsaquo;</button>
-  </div>
-</section>
+  </section>
+  -->
   <div class="main-content-bg">
     <section class="features-section" id="features">
       <h2 class="features-title">Key Features</h2>
@@ -285,41 +287,6 @@
       });
     });
 
-    // Trending carousel logic: slide one card at a time, left/right
-    (function() {
-      const carousel = document.getElementById('trendingCarousel');
-      const cards = Array.from(carousel.querySelectorAll('.trending-project-card.large'));
-      const nextBtn = document.getElementById('trendingNext');
-      const prevBtn = document.getElementById('trendingPrev');
-      let startIdx = 0;
-      const visibleCount = 3;
-
-      function updateCarousel() {
-        cards.forEach((card, i) => {
-          if (i >= startIdx && i < startIdx + visibleCount) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      }
-
-      if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-          startIdx++;
-          if (startIdx > cards.length - visibleCount) startIdx = 0;
-          updateCarousel();
-        });
-      }
-      if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-          startIdx--;
-          if (startIdx < 0) startIdx = Math.max(cards.length - visibleCount, 0);
-          updateCarousel();
-        });
-      }
-      updateCarousel();
-    })();
   </script>
 </body>
 </html>
