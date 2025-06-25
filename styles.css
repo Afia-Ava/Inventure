@@ -114,7 +114,7 @@ header.hero::after {
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  padding: 1.2rem 0 1.2rem 0;
+  padding: 1.2rem 48px 1.2rem 0; 
 }
 .logo {
   margin-left: 48px;
@@ -226,7 +226,7 @@ header.hero::after {
 
 .community-section {
   max-width: 1100px;
-  margin: 0 auto 0 auto;
+  margin: 4rem auto 0 auto; /* Add more space before Community Highlights */
   padding: 0 2vw;
 }
 
@@ -295,7 +295,7 @@ header.hero::after {
 .are-you-section {
   width: 100%;
   max-width: 1100px;
-  margin: 3.5rem auto 3.5rem auto;
+  margin: 7.0rem auto 3.5rem auto; 
   padding: 0 2vw;
   display: flex;
   flex-direction: column;
@@ -652,7 +652,7 @@ header.hero::after {
 }
 
 footer {
-  background: #181f25;
+  background: #0a0b0c; 
   color: #bbb;
   border-top: 1.5px solid #23272f;
   box-shadow: 0 -2px 24px rgba(34,197,94,0.04);
@@ -896,5 +896,308 @@ footer {
     top: 18px;
     right: 18px;
     font-size: 2rem;
+  }
+}
+
+.trending-projects-section {
+  width: 100%;
+  max-width: 1100px;
+  margin: 6rem auto 6rem auto; 
+  padding: 0 2vw;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.trending-projects-title {
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+.trending-projects-desc {
+  color: #bbb;
+  font-size: 1.02rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  text-align: center;
+  margin-bottom: 0.2rem;
+  margin-top: 0.1rem;
+  min-height: 2.5em;
+  line-height: 1.5;
+}
+
+.trending-carousel {
+  display: flex;
+  gap: 1.2rem;
+  width: 100%;
+  overflow-x: hidden;
+  justify-content: center;
+  position: relative;
+  scrollbar-width: none;
+  padding-right: 60px; 
+  padding-left: 60px;  
+}
+.trending-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* Trending project card: smaller frame, bigger image, no extra border/frame */
+.trending-project-card.large {
+  background: #181d23;
+  border-radius: 1.1rem;
+  border: 1.5px solid #444;
+  min-width: 270px;
+  max-width: 320px;
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.5rem 0.5rem 1.1rem 0.5rem;
+  box-shadow: 0 2px 12px rgba(34,197,94,0.08);
+  transition: box-shadow 0.18s, border 0.18s;
+}
+
+.trending-project-card.large:hover {
+  box-shadow: 0 8px 32px rgba(34,197,94,0.13);
+  border-color: var(--accent-green);
+}
+
+/* Remove double border between cards */
+.trending-project-card.large:not(:first-child) {
+  margin-left: -1.5px;
+}
+
+/* Make image fill the card, rounded corners */
+.trending-project-img-holder {
+  width: 100%;
+  height: 200px;
+  background: #23272f;
+  border-radius: 1rem;
+  margin-bottom: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.trending-project-img-holder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+}
+
+.trending-project-name.large {
+  font-size: 1.18rem;
+  font-weight: 700;
+  color: #fff;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  margin-bottom: 0.7rem;
+  text-align: center;
+}
+
+.trending-project-meta.large {
+  display: none;
+}
+
+.trending-carousel-nav {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  background: #23272f;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(34,197,94,0.10);
+  border: 2px solid #23272f;
+  color: #fff;
+  font-size: 1.6rem;
+  transition: background 0.18s, color 0.18s;
+}
+.trending-carousel-nav:hover {
+  background: var(--accent-green);
+  color: #fff;
+}
+.trending-carousel-nav-left {
+  left: 12px;
+  right: auto;
+  transform: translateY(-50%);
+}
+.trending-carousel-nav:not(.trending-carousel-nav-left) {
+  right: 12px;
+  left: auto;
+  transform: translateY(-50%);
+}
+
+@media (max-width: 900px) {
+  .trending-carousel {
+    gap: 0.7rem;
+  }
+  .trending-project-card.large {
+    min-width: 160px;
+    max-width: 210px;
+    flex-basis: 30%;
+    padding: 0.3rem 0.3rem 0.7rem 0.3rem;
+  }
+  .trending-project-img-holder {
+    height: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .trending-projects-section {
+    padding: 0 1vw;
+  }
+  .trending-projects-title {
+    font-size: 1.1rem;
+  }
+  .trending-project-card.large {
+    min-width: 100px;
+    max-width: 120px;
+    flex-basis: 30%;
+    padding: 0.2rem 0.2rem 0.5rem 0.2rem;
+  }
+  .trending-project-img-holder {
+    height: 48px;
+  }
+  .trending-carousel-nav {
+    width: 28px;
+    height: 28px;
+    font-size: 1.1rem;
+    right: -0.8rem;
+  }
+}
+
+/* Dashboard layout improvements */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+.dashboard-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dashboard-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.dashboard-card {
+  background: #23272f;
+  border-radius: 1.2rem;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 12px rgba(34,197,94,0.07);
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.dashboard-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.7rem;
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+}
+.dashboard-profile-row {
+  display: flex;
+  gap: 0.5em;
+  color: #bbb;
+  font-size: 1rem;
+  align-items: center;
+}
+.dashboard-label {
+  color: #bbb;
+  font-weight: 600;
+  min-width: 60px;
+}
+.dashboard-value {
+  color: #fff;
+  font-weight: 400;
+}
+.dashboard-link {
+  color: var(--accent-green);
+  text-decoration: underline;
+}
+.dashboard-badge {
+  background: var(--accent-green);
+  color: #fff;
+  padding: 0.2em 0.7em;
+  border-radius: 1em;
+  font-size: 0.95em;
+  margin-right: 0.4em;
+  display: inline-block;
+}
+.dashboard-badge-green {
+  background: #15803d;
+}
+.dashboard-badge-gray {
+  background: #444;
+}
+.dashboard-badges-list {
+  display: flex;
+  gap: 0.5em;
+  margin-top: 0.3em;
+}
+.dashboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #bbb;
+  font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.dashboard-list-title {
+  color: #fff;
+  font-weight: 600;
+}
+.dashboard-list-status {
+  font-size: 0.95em;
+  border-radius: 0.7em;
+  padding: 0.1em 0.7em;
+  margin-left: 0.5em;
+  font-weight: 500;
+}
+.dashboard-status-current {
+  background: #15803d;
+  color: #fff;
+}
+.dashboard-status-draft {
+  background: #444;
+  color: #fff;
+}
+.dashboard-status-archived {
+  background: #23272f;
+  color: #bbb;
+  border: 1px solid #444;
+}
+.dashboard-list-date {
+  color: #888;
+  font-size: 0.95em;
+  margin-left: 0.3em;
+}
+
+/* Responsive for dashboard */
+@media (max-width: 900px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .dashboard-sidebar, .dashboard-main {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }

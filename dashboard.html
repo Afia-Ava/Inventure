@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard – Inventure</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navbar (identical to home page, with Dashboard link highlighted) -->
+  <header class="hero" style="min-height:unset;padding:0;">
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" style="color:inherit;text-decoration:none;">Inventure</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="#join" class="join-btn">Join</a>
+        <button class="menu-icon" id="menuToggle" tabindex="0" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;margin-left:16px;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;height:40px;width:40px;">
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <!-- Dashboard Main Content -->
+  <div class="main-content-bg">
+    <main style="max-width:1100px;margin:7rem auto 4rem auto;padding:0 2vw;">
+      <h1 class="features-title" style="margin-bottom:0.7rem;">Dashboard</h1>
+      <div class="features-desc" style="margin-bottom:2.5rem;">Your home base as a builder.</div>
+      <div class="dashboard-grid">
+        <aside class="dashboard-sidebar">
+          <section class="dashboard-card">
+            <h2 class="dashboard-card-title">👤 Your Profile</h2>
+            <div class="dashboard-profile-row"><span class="dashboard-label">Bio:</span> <span class="dashboard-value" style="color:#888;">(not set)</span></div>
+            <div class="dashboard-profile-row"><span class="dashboard-label">Tags:</span> <span class="dashboard-value" style="color:#888;">(none)</span></div>
+            <div class="dashboard-profile-row"><span class="dashboard-label">Links:</span> <span class="dashboard-value" style="color:#888;">(none)</span></div>
+            <div class="dashboard-profile-row"><span class="dashboard-label">Badges:</span> <span class="dashboard-value" style="color:#888;">(none yet)</span></div>
+          </section>
+          <section class="dashboard-card">
+            <h2 class="dashboard-card-title">🎖️ Badges & Progress</h2>
+            <div class="dashboard-profile-row"><span class="dashboard-label">Level:</span> <span class="dashboard-value" style="color:#888;">(none yet)</span></div>
+            <div class="dashboard-badges-list" style="color:#888;">No badges earned yet.</div>
+          </section>
+        </aside>
+        <section class="dashboard-main">
+          <section class="dashboard-card">
+            <h2 class="dashboard-card-title">🧱 My Projects</h2>
+            <ul class="dashboard-list">
+              <li style="color:#888;">No projects yet.</li>
+            </ul>
+          </section>
+          <section class="dashboard-card">
+            <h2 class="dashboard-card-title">💬 My Posts & Updates</h2>
+            <ul class="dashboard-list">
+              <li style="color:#888;">No posts yet.</li>
+            </ul>
+          </section>
+          <section class="dashboard-card">
+            <h2 class="dashboard-card-title">🌟 Saved Projects</h2>
+            <ul class="dashboard-list">
+              <li style="color:#888;">No saved projects.</li>
+            </ul>
+          </section>
+          <section class="dashboard-card">
+            <h2 class="dashboard-card-title">🤝 Collab Requests</h2>
+            <ul class="dashboard-list">
+              <li style="color:#888;">No collaboration activity yet.</li>
+            </ul>
+          </section>
+          <section class="dashboard-card">
+            <h2 class="dashboard-card-title">📅 Events You’re In</h2>
+            <ul class="dashboard-list">
+              <li style="color:#888;">No events joined yet.</li>
+            </ul>
+          </section>
+        </section>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">
+          Inventure
+        </div>
+        <div class="footer-social">
+          <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+            <!-- Twitter SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.924c-.793.352-1.646.59-2.54.698a4.48 4.48 0 0 0 1.964-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03a12.72 12.72 0 0 1-9.23-4.68 4.48 4.48 0 0 0 1.39 5.98A4.44 4.44 0 0 1 2 9.13v.057a4.48 4.48 0 0 0 3.6 4.39c-.4.11-.82.17-1.25.17-.31 0-.6-.03-.89-.08a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.07a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.77 0-.19 0-.37-.01-.56A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.6.71Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+            <!-- LinkedIn SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.47-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/></svg>
+          </a>
+          <a href="mailto:hello@inventure.com" aria-label="Email">
+            <!-- Email SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4v-9.99l8 6.99 8-6.99V18z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#join">Join</a>
+      </nav>
+      <div class="footer-contact">
+        <span><strong>Contact:</strong></span>
+        <span>Email: <a href="mailto:hello@inventure.com">hello@inventure.com</a></span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Inventure. All rights reserved.
+    </div>
+  </footer>
+  <div id="overlayMenu" class="overlay-menu" style="display:none;">
+    <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
+    <ul class="overlay-menu-list">
+      <li>
+        <a href="index.html">Home</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Explore</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Create</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Communities</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Dashboard</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="#">Messages</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="notifications.html">Notifications</a>
+        <span class="plus">+</span>
+      </li>
+    </ul>
+  </div>
+  <script>
+    // Simple overlay menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const overlayClose = document.getElementById('overlayClose');
+    menuToggle.addEventListener('click', () => {
+      overlayMenu.style.display = 'flex';
+    });
+    overlayClose.addEventListener('click', () => {
+      overlayMenu.style.display = 'none';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') overlayMenu.style.display = 'none';
+    });
+
+    // Ensure overlay closes before navigation for all links
+    document.querySelectorAll('.overlay-menu-list a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        overlayMenu.style.display = 'none';
+        const href = this.getAttribute('href');
+        // Open dashboard.html if Dashboard is clicked
+        if (this.textContent.trim().startsWith('Dashboard')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 180);
+          return;
+        }
+        // Open notifications.html if Notifications is clicked
+        if (this.textContent.trim().startsWith('Notifications')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'notifications.html';
+          }, 180);
+          return;
+        }
+        // Open index.html if Home is clicked
+        if (this.textContent.trim().startsWith('Home')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 180);
+          return;
+        }
+        if (href && href !== '#') {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = href;
+          }, 180);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

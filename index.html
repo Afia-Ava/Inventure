@@ -12,7 +12,9 @@
 <body>
   <header class="hero">
     <nav class="navbar">
-      <div class="logo">Inventure</div>
+      <div class="logo">
+        <a href="index.html" style="color:inherit;text-decoration:none;">Inventure</a>
+      </div>
       <div class="navbar-actions">
         <a href="#join" class="join-btn">Join</a>
         <!-- 3-line (hamburger) icon button -->
@@ -49,6 +51,51 @@
       </div>
     </div>
   </section>
+  <!-- Live/Trending Projects Section -->
+  <section class="trending-projects-section">
+  <h2 class="trending-projects-title" style="font-size:2rem;font-weight:700;letter-spacing:0.5px;">Trending Projects</h2>
+  <div class="trending-projects-desc">What’s being built right now.</div>
+  <div class="trending-carousel" id="trendingCarousel">
+    <button class="trending-carousel-nav trending-carousel-nav-left" id="trendingPrev" aria-label="Previous projects">&lsaquo;</button>
+    <div class="trending-project-card large">
+      <div class="trending-project-img-holder">
+        <img src="project1.jpg" alt="AI Note Taker" />
+      </div>
+      <div class="trending-project-name large">AI Note Taker</div>
+      <div class="trending-project-desc">AI-powered meeting notes.</div>
+    </div>
+    <div class="trending-project-card large">
+      <div class="trending-project-img-holder">
+        <img src="project2.jpg" alt="Smart Plant Monitor" />
+      </div>
+      <div class="trending-project-name large">Smart Plant Monitor</div>
+      <div class="trending-project-desc">Monitor your plants remotely.</div>
+    </div>
+    <div class="trending-project-card large">
+      <div class="trending-project-img-holder">
+        <img src="project3.jpg" alt="Peer Tutoring App" />
+      </div>
+      <div class="trending-project-name large">Peer Tutoring App</div>
+      <div class="trending-project-desc">Connect for student help.</div>
+    </div>
+    <div class="trending-project-card large">
+      <div class="trending-project-img-holder">
+        <img src="project4.jpg" alt="Robotics Kit" />
+      </div>
+      <div class="trending-project-name large">Robotics Kit</div>
+      <div class="trending-project-desc">Build and code robots.</div>
+    </div>
+    <div class="trending-project-card large">
+      <div class="trending-project-img-holder">
+        <img src="project5.jpg" alt="Eco Tracker" />
+      </div>
+      <div class="trending-project-name large">Eco Tracker</div>
+      <div class="trending-project-desc">Track your carbon footprint.</div>
+    </div>
+    <!-- Add more project cards as needed -->
+    <button class="trending-carousel-nav" id="trendingNext" aria-label="Next projects">&rsaquo;</button>
+  </div>
+</section>
   <div class="main-content-bg">
     <section class="features-section" id="features">
       <h2 class="features-title">Key Features</h2>
@@ -110,8 +157,8 @@
     <div class="footer-container">
       <div>
         <div class="footer-logo">
-  Inventure
-</div>
+          Inventure
+        </div>
         <div class="footer-social">
           <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
             <!-- Twitter SVG -->
@@ -137,7 +184,6 @@
       <div class="footer-contact">
         <span><strong>Contact:</strong></span>
         <span>Email: <a href="mailto:hello@inventure.com">hello@inventure.com</a></span>
-        <span>Location: Remote / Global</span>
       </div>
     </div>
     <div class="footer-bottom">
@@ -145,28 +191,27 @@
     </div>
   </footer>
 
-  <!-- Overlay menu -->
   <div id="overlayMenu" class="overlay-menu" style="display:none;">
     <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
     <ul class="overlay-menu-list">
       <li>
-        <a href="#">Home</a>
+        <a href="index.html">Home</a>
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Explore</a>
+        <a href="explore.html">Explore</a>
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Create</a>
+        <a href="create.html">Create</a>
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Communities</a>
+        <a href="communities.html">Communities</a>
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Dashboard</a>
+        <a href="dashboard.html">Dashboard</a>
         <span class="plus">+</span>
       </li>
       <li>
@@ -174,12 +219,11 @@
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Notifications</a>
+        <a href="notifications.html">Notifications</a>
         <span class="plus">+</span>
       </li>
     </ul>
   </div>
-
   <script>
     // Simple overlay menu toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -191,10 +235,91 @@
     overlayClose.addEventListener('click', () => {
       overlayMenu.style.display = 'none';
     });
-    // Optional: close overlay on ESC key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') overlayMenu.style.display = 'none';
     });
+
+    // Ensure overlay closes before navigation for all links
+    document.querySelectorAll('.overlay-menu-list a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        overlayMenu.style.display = 'none';
+        const href = this.getAttribute('href');
+        // Open dashboard.html if Dashboard is clicked
+        if (this.textContent.trim().startsWith('Dashboard')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'dashboard.html';
+          }, 180);
+          return;
+        }
+        // Open notifications.html if Notifications is clicked
+        if (this.textContent.trim().startsWith('Notifications')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'notifications.html';
+          }, 180);
+          return;
+        }
+        // Open explore.html if Explore is clicked
+        if (this.textContent.trim().startsWith('Explore')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'explore.html';
+          }, 180);
+          return;
+        }
+        // Open index.html if Home is clicked
+        if (this.textContent.trim().startsWith('Home')) {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 180);
+          return;
+        }
+        if (href && href !== '#') {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = href;
+          }, 180);
+        }
+      });
+    });
+
+    // Trending carousel logic: slide one card at a time, left/right
+    (function() {
+      const carousel = document.getElementById('trendingCarousel');
+      const cards = Array.from(carousel.querySelectorAll('.trending-project-card.large'));
+      const nextBtn = document.getElementById('trendingNext');
+      const prevBtn = document.getElementById('trendingPrev');
+      let startIdx = 0;
+      const visibleCount = 3;
+
+      function updateCarousel() {
+        cards.forEach((card, i) => {
+          if (i >= startIdx && i < startIdx + visibleCount) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          startIdx++;
+          if (startIdx > cards.length - visibleCount) startIdx = 0;
+          updateCarousel();
+        });
+      }
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          startIdx--;
+          if (startIdx < 0) startIdx = Math.max(cards.length - visibleCount, 0);
+          updateCarousel();
+        });
+      }
+      updateCarousel();
+    })();
   </script>
 </body>
 </html>
