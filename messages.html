@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages – Inventure</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Layout */
+    .messages-layout {
+      display: flex;
+      gap: 0;
+      background: var(--main-bg, #10141a);
+      min-height: 70vh;
+    }
+    .messages-sidebar {
+      width: 260px;
+      background: #181c22;
+      border-radius: 1.2em;
+      padding: 2.2em 1.2em 1.2em 1.2em;
+      margin-right: 2.5em;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5em;
+    }
+    .messages-sidebar h3 {
+      font-size: 1.08em;
+      font-weight: 700;
+      margin-bottom: 0.7em;
+      color: #fff;
+      letter-spacing: 0.2px;
+    }
+    .messages-sidebar .sidebar-section {
+      margin-bottom: 1.5em;
+    }
+    .messages-sidebar .sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .messages-sidebar .sidebar-list li {
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      padding: 0.4em 0;
+      color: #fff;
+      font-size: 1em;
+      border-radius: 0.5em;
+      cursor: pointer;
+    }
+    .messages-sidebar .sidebar-list li.active,
+    .messages-sidebar .sidebar-list li:hover {
+      background: #23272f;
+      color: var(--accent-green, #22c55e);
+    }
+    .messages-sidebar .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #23272f;
+    }
+    /* Main content */
+    .messages-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5em;
+      min-width: 0;
+    }
+    .messages-chat {
+      background: #181c22;
+      border-radius: 1.2em;
+      padding: 2em 2em 1.5em 2em;
+      margin-bottom: 0.5em;
+      min-height: 220px;
+    }
+    .messages-chat-header {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.2em;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+    }
+    .messages-chat-sub {
+      color: #bbb;
+      font-size: 0.98em;
+      margin-bottom: 1.2em;
+    }
+    .messages-bubble-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+      margin-bottom: 1.2em;
+    }
+    .messages-bubble {
+      max-width: 60%;
+      padding: 0.8em 1.2em;
+      border-radius: 1.2em;
+      font-size: 1em;
+      background: #23272f;
+      color: #fff;
+      align-self: flex-start;
+      margin-bottom: 0.2em;
+    }
+    .messages-bubble.you {
+      background: #1e293b;
+      color: #d1fae5;
+      align-self: flex-end;
+    }
+    .messages-bubble .bubble-meta {
+      font-size: 0.85em;
+      color: #888;
+      margin-top: 0.2em;
+    }
+    .messages-chat-actions {
+      display: flex;
+      gap: 1em;
+      margin-top: 0.7em;
+    }
+    .messages-chat-actions button {
+      padding: 0.5em 1.5em;
+      border-radius: 1em;
+      background: var(--accent-green, #22c55e);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 1em;
+    }
+    .messages-chat-actions button.secondary {
+      background: #23272f;
+      color: #fff;
+    }
+    .messages-input-row {
+      display: flex;
+      gap: 0.7em;
+      margin-top: 1em;
+    }
+    .messages-input-row input[type="text"] {
+      flex: 1;
+      padding: 0.7em 1em;
+      border-radius: 1em;
+      border: 1px solid #333;
+      background: #181c22;
+      color: #fff;
+      font-size: 1em;
+    }
+    /* Team section */
+    .messages-team-section {
+      background: #181c22;
+      border-radius: 1.2em;
+      padding: 2em 2em 1.5em 2em;
+    }
+    .messages-team-header {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.5em;
+      display: flex;
+      gap: 1.5em;
+      align-items: center;
+    }
+    .messages-team-tabs {
+      display: flex;
+      gap: 1.2em;
+      margin-bottom: 1.2em;
+    }
+    .messages-team-tabs .tab {
+      color: #bbb;
+      font-size: 1em;
+      padding: 0.2em 0.7em;
+      border-radius: 0.7em;
+      cursor: pointer;
+    }
+    .messages-team-tabs .tab.active {
+      background: #23272f;
+      color: var(--accent-green, #22c55e);
+    }
+    .messages-team-pinned {
+      margin-bottom: 1.2em;
+      color: #fff;
+    }
+    .messages-team-pinned .icon {
+      margin-right: 0.5em;
+      color: #fbbf24;
+    }
+    .messages-team-updates {
+      margin-bottom: 1.2em;
+    }
+    .messages-team-update {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7em;
+      margin-bottom: 0.7em;
+    }
+    .messages-team-update .avatar {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-top: 2px;
+    }
+    .messages-team-update .update-content {
+      background: #23272f;
+      border-radius: 1em;
+      padding: 0.7em 1em;
+      color: #fff;
+      font-size: 0.98em;
+      flex: 1;
+    }
+    .messages-team-update .update-meta {
+      font-size: 0.85em;
+      color: #888;
+      margin-top: 0.2em;
+    }
+    .messages-team-threads {
+      margin-top: 1.2em;
+    }
+    .messages-team-thread {
+      margin-bottom: 1em;
+    }
+    .messages-team-thread .thread-meta {
+      font-size: 0.9em;
+      color: #bbb;
+      margin-bottom: 0.2em;
+    }
+    .messages-team-thread .thread-content {
+      background: #23272f;
+      border-radius: 1em;
+      padding: 0.7em 1em;
+      color: #fff;
+      font-size: 0.98em;
+    }
+    .messages-sidebar .sidebar-list li .user-actions {
+      margin-left: auto;
+      display: flex;
+      gap: 0.3em;
+    }
+    .messages-sidebar .sidebar-list li .user-actions button {
+      background: #23272f;
+      color: #fff;
+      border: none;
+      border-radius: 0.5em;
+      padding: 0.2em 0.6em;
+      font-size: 0.95em;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .messages-sidebar .sidebar-list li .user-actions button:hover {
+      background: var(--accent-green, #22c55e);
+      color: #fff;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .add {
+      font-weight: bold;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .remove {
+      color: #f87171;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .remove:hover {
+      background: #f87171;
+      color: #fff;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .msg {
+      color: #22c55e;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .msg:hover {
+      background: #22c55e;
+      color: #fff;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .group {
+      color: #60a5fa;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .group:hover {
+      background: #60a5fa;
+      color: #fff;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .active {
+      background: var(--accent-green, #22c55e);
+      color: #fff;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .inactive {
+      background: #23272f;
+      color: #fff;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .self {
+      display: none;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .group {
+      font-size: 1.1em;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .msg {
+      font-size: 1.1em;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .add {
+      font-size: 1.1em;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .remove {
+      font-size: 1.1em;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .self {
+      display: none;
+    }
+    .messages-sidebar .sidebar-list li .user-actions .disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .messages-layout {
+        flex-direction: column;
+      }
+      .messages-sidebar {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 2em;
+        min-height: unset;
+      }
+      .messages-main {
+        width: 100%;
+      }
+    }
+    /* New styles for slidebar */
+    .messages-container-flex {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 0;
+    }
+    .messages-slidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2em;
+      overflow-x: unset;
+      overflow-y: auto;
+      padding: 0.7em 0 0.7em 0.2em;
+      margin-bottom: 0;
+      margin-right: 2.5em;
+      min-width: 220px;
+      width: 260px;
+      flex-shrink: 0;
+      border-bottom: none;
+      height: 480px;
+      max-height: 70vh;
+    }
+    .slidebar-entry {
+      display: flex;
+      align-items: center;
+      gap: 0.9em;
+      min-width: 0;
+      cursor: pointer;
+      color: #fff;
+      opacity: 0.85;
+      padding: 0.4em 0.7em 0.4em 0.2em;
+      border-radius: 0.7em;
+      transition: background 0.15s, opacity 0.15s;
+      font-size: 1em;
+    }
+    .slidebar-entry.active,
+    .slidebar-entry:hover {
+      opacity: 1;
+      background: #23272f;
+      color: var(--accent-green, #22c55e);
+    }
+    .slidebar-entry .avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 0.5em;
+      object-fit: cover;
+      border: 2px solid #23272f;
+      margin-bottom: 0;
+    }
+    .slidebar-entry .entry-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    .slidebar-entry .entry-name {
+      font-size: 1em;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 120px;
+    }
+    .slidebar-entry .entry-location {
+      font-size: 0.85em;
+      color: #bbb;
+      margin-top: -0.1em;
+    }
+    .slidebar-entry .entry-group-icon {
+      font-size: 1.2em;
+      margin-right: 0.2em;
+      color: #60a5fa;
+    }
+    /* Hide old sidebar */
+    .messages-sidebar {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" style="min-height:unset;padding:0;">
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" style="color:inherit;text-decoration:none;">Inventure</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="#join" class="join-btn">Join</a>
+        <button class="menu-icon" id="menuToggle" tabindex="0" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;margin-left:16px;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;height:40px;width:40px;">
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <div class="main-content-bg">
+    <main style="max-width:1100px;margin:7rem auto 4rem auto;padding:0 2vw;">
+      <h1 class="features-title" style="margin-bottom:0.7rem;">💬 Messages</h1>
+      <div class="features-desc" style="margin-bottom:2.5rem;">Chat with collaborators, match-made connections, and community members.</div>
+      <div class="messages-container-flex">
+        <div class="messages-slidebar" id="slidebarCombined">
+          <!-- Populated by JS -->
+        </div>
+        <div class="messages-main">
+          <section class="messages-chat" id="chatSection" style="display:none;">
+            <div class="messages-chat-header" id="chatHeader"></div>
+            <div class="messages-chat-sub" id="chatSub"></div>
+            <div class="messages-bubble-group" id="chatBubbles"></div>
+            <div class="messages-input-row">
+              <input type="text" id="chatInput" placeholder="Type a message..." autocomplete="off" />
+              <button id="sendBtn" style="padding:0.5em 1.5em;border-radius:1em;background:var(--accent-green);color:#fff;border:none;font-weight:600;cursor:pointer;">Send</button>
+            </div>
+          </section>
+          <section class="messages-team-section" id="groupSection" style="display:none;">
+            <div class="messages-team-header" id="groupHeader"></div>
+            <div class="messages-team-tabs">
+              <span class="tab active">Overview</span>
+              <span class="tab">Updates</span>
+              <span class="tab">Threads</span>
+            </div>
+            <div class="messages-team-pinned" id="groupPinned"></div>
+            <div class="messages-team-updates" id="groupUpdates"></div>
+            <div class="messages-team-threads" id="groupThreads"></div>
+          </section>
+          <section id="emptySection">
+            <div style="
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              height: 60vh;
+              min-height: 320px;
+              color: #bbb;
+              font-family: 'Inter', 'Poppins', 'Montserrat', Arial, sans-serif;
+              width: 100%;
+              position: relative;
+            ">
+              <div style="
+                background: #181c22;
+                border-radius: 1.5em;
+                padding: 2.5em 2.5em 2em 2.5em;
+                box-shadow: 0 2px 16px 0 #0002;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                max-width: 420px;
+                width: 100%;
+                margin: 0 auto;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+              ">
+                <div style="font-size:2.2rem;line-height:1.1;margin-bottom:0.7em;">💬</div>
+                <div style="font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:0.5em;letter-spacing:0.2px;">
+                  No chats yet
+                </div>
+                <div style="font-size:1.05rem;color:#bbb;margin-bottom:1.2em;text-align:center;">
+                  Find profiles in the <a href="communities.html" style="color:var(--accent-green,#22c55e);text-decoration:underline;font-weight:600;">Community</a> and start a conversation!
+                </div>
+                <a href="communities.html" style="
+                  display:inline-block;
+                  background: var(--accent-green,#22c55e);
+                  color: #fff;
+                  font-weight: 600;
+                  border-radius: 1.2em;
+                  padding: 0.7em 2.2em;
+                  font-size: 1.08em;
+                  text-decoration: none;
+                  transition: background 0.18s;
+                  box-shadow: 0 1px 8px 0 #0001;
+                " onmouseover="this.style.background='#16a34a'" onmouseout="this.style.background='var(--accent-green,#22c55e)'">
+                  Browse Community
+                </a>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">
+          Inventure
+        </div>
+        <div class="footer-social">
+          <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+            <!-- Twitter SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.924c-.793.352-1.646.59-2.54.698a4.48 4.48 0 0 0 1.964-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03a12.72 12.72 0 0 1-9.23-4.68 4.48 4.48 0 0 0 1.39 5.98A4.44 4.44 0 0 1 2 9.13v.057a4.48 4.48 0 0 0 3.6 4.39c-.4.11-.82.17-1.25.17-.31 0-.6-.03-.89-.08a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.07a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.77 0-.19 0-.37-.01-.56A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.6.71Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+            <!-- LinkedIn SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.47-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/></svg>
+          </a>
+          <a href="mailto:hello@inventure.com" aria-label="Email">
+            <!-- Email SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4v-9.99l8 6.99 8-6.99V18z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#join">Join</a>
+      </nav>
+      <div class="footer-contact">
+        <span><strong>Contact:</strong></span>
+        <span>Email: <a href="mailto:hello@inventure.com">hello@inventure.com</a></span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Inventure. All rights reserved.
+    </div>
+  </footer>
+  <div id="overlayMenu" class="overlay-menu" style="display:none;">
+    <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
+    <ul class="overlay-menu-list">
+      <li>
+        <a href="index.html">Home</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="explore.html">Explore</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="create.html">Create</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="communities.html">Communities</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="dashboard.html">Dashboard</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="messages.html">Messages</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="notifications.html">Notifications</a>
+        <span class="plus">+</span>
+      </li>
+    </ul>
+  </div>
+  <script>
+    // --- Demo Data ---
+    const currentUser = "You";
+    const users = [
+      { name: "You", avatar: "avatar-you.jpg", location: "SF" },
+      { name: "Ethan", avatar: "avatar-ethan.jpg", location: "NYC" },
+      { name: "Jane Doe", avatar: "avatar-jane.jpg", location: "SF" },
+      { name: "Olivia", avatar: "avatar-olivia.jpg", location: "LA" },
+      { name: "Liam", avatar: "avatar-liam.jpg", location: "London" },
+      { name: "Chloe", avatar: "avatar-chloe.jpg", location: "Berlin" }
+    ];
+    // Each DM is {users: [user1, user2], messages: [{from, text, ts}]}
+    let dms = []; // Start with no chats
+    // Each group is {name, members, pinned, updates, threads}
+    let groups = []; // Start with no groups
+    // --- UI State ---
+    let selectedChat = null; // {type: 'dm', users: [..]} or {type: 'group', name: ...}
+    // --- Render Functions ---
+    function renderCombinedSlidebar() {
+      const slidebar = document.getElementById('slidebarCombined');
+      slidebar.innerHTML = '';
+      // Only show users with whom a DM exists
+      dms.forEach(dm => {
+        const other = dm.users.find(u => u !== currentUser);
+        const u = users.find(x => x.name === other);
+        if (!u) return;
+        const isActive = selectedChat && selectedChat.type === 'dm' && selectedChat.users.includes(u.name);
+        const div = document.createElement('div');
+        div.className = 'slidebar-entry' + (isActive ? ' active' : '');
+        div.onclick = () => {
+          selectDM(u.name);
+        };
+        div.innerHTML = `
+          <img src="${u.avatar}" class="avatar" alt="${u.name}" />
+          <div class="entry-info">
+            <div class="entry-name">${u.name}</div>
+            <div class="entry-location">${u.location}</div>
+          </div>
+        `;
+        slidebar.appendChild(div);
+      });
+      // Divider
+      if (dms.length > 0 && groups.length > 0) {
+        const divider = document.createElement('div');
+        divider.style.margin = "0.7em 0 0.3em 0";
+        divider.style.borderTop = "1px solid #23272f";
+        slidebar.appendChild(divider);
+      }
+      // Only show groups if any exist
+      groups.forEach(g => {
+        const isActive = selectedChat && selectedChat.type === 'group' && selectedChat.name === g.name;
+        const div = document.createElement('div');
+        div.className = 'slidebar-entry' + (isActive ? ' active' : '');
+        div.onclick = () => selectGroup(g.name);
+        div.innerHTML = `
+          <span class="entry-group-icon">👥</span>
+          <div class="entry-info">
+            <div class="entry-name">${g.name}</div>
+            <div class="entry-location" style="color:#bbb;">Group Chat</div>
+          </div>
+        `;
+        slidebar.appendChild(div);
+      });
+    }
+    function renderChat() {
+      document.getElementById('chatSection').style.display = selectedChat && selectedChat.type === 'dm' ? '' : 'none';
+      document.getElementById('groupSection').style.display = selectedChat && selectedChat.type === 'group' ? '' : 'none';
+      // Show emptySection if no chats at all or nothing selected
+      const noChats = dms.length === 0 && groups.length === 0;
+      document.getElementById('emptySection').style.display = (!selectedChat || noChats) ? '' : 'none';
+      if (selectedChat && selectedChat.type === 'dm') {
+        const other = selectedChat.users.find(u => u !== currentUser);
+        const u = users.find(x => x.name === other);
+        document.getElementById('chatHeader').innerHTML = `<b>${u.name}</b> <span style="font-size:0.95em;font-weight:400;color:#bbb;">${u.location}</span>`;
+        document.getElementById('chatSub').innerHTML = '';
+        const dm = dms.find(d => d.users.includes(other));
+        const bubbles = document.getElementById('chatBubbles');
+        bubbles.innerHTML = '';
+        dm.messages.forEach(m => {
+          const div = document.createElement('div');
+          div.className = 'messages-bubble' + (m.from === currentUser ? ' you' : '');
+          div.textContent = m.text;
+          bubbles.appendChild(div);
+        });
+        document.getElementById('chatInput').value = '';
+      }
+      if (selectedChat && selectedChat.type === 'group') {
+        const g = groups.find(x => x.name === selectedChat.name);
+        document.getElementById('groupHeader').textContent = g.name;
+        document.getElementById('groupPinned').innerHTML = `<span class="icon">📌</span> <span>${g.pinned}</span>`;
+        // Updates
+        const updates = document.getElementById('groupUpdates');
+        updates.innerHTML = '';
+        g.updates.forEach(u => {
+          updates.innerHTML += `
+            <div class="messages-team-update">
+              <img src="${u.avatar}" class="avatar" alt="${u.from}" />
+              <div>
+                <div class="update-content">${u.text}</div>
+                <div class="update-meta">${u.from} · ${u.ts}</div>
+              </div>
+            </div>
+          `;
+        });
+        // Threads
+        const threads = document.getElementById('groupThreads');
+        threads.innerHTML = '';
+        g.threads.forEach(t => {
+          threads.innerHTML += `
+            <div class="messages-team-thread">
+              <div class="thread-meta">${t.from} · ${t.ts}</div>
+              <div class="thread-content">${t.text}</div>
+            </div>
+          `;
+        });
+      }
+    }
+    // --- Actions ---
+    function startDM(name) {
+      if (name === currentUser) return;
+      if (!dms.find(dm => dm.users.includes(name))) {
+        dms.push({ users: [currentUser, name], messages: [] });
+      }
+      selectDM(name);
+    }
+    function selectDM(name) {
+      selectedChat = { type: 'dm', users: [currentUser, name] };
+      renderCombinedSlidebar();
+      renderChat();
+    }
+    function selectGroup(name) {
+      selectedChat = { type: 'group', name };
+      renderCombinedSlidebar();
+      renderChat();
+    }
+    // --- Send Message ---
+    document.addEventListener('DOMContentLoaded', function() {
+      renderCombinedSlidebar();
+      renderChat();
+      document.getElementById('sendBtn').onclick = function() {
+        if (!selectedChat || selectedChat.type !== 'dm') return;
+        const input = document.getElementById('chatInput');
+        const text = input.value.trim();
+        if (!text) return;
+        const other = selectedChat.users.find(u => u !== currentUser);
+        const dm = dms.find(d => d.users.includes(other));
+        dm.messages.push({ from: currentUser, text, ts: "now" });
+        renderChat();
+      };
+      document.getElementById('chatInput').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') document.getElementById('sendBtn').click();
+      });
+    });
+    // ...existing overlay menu code...
+  </script>
+  <script>
+    // Simple overlay menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const overlayClose = document.getElementById('overlayClose');
+    menuToggle.addEventListener('click', () => {
+      overlayMenu.style.display = 'flex';
+    });
+    overlayClose.addEventListener('click', () => {
+      overlayMenu.style.display = 'none';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') overlayMenu.style.display = 'none';
+    });
+
+    // Ensure overlay closes before navigation for all links
+    document.querySelectorAll('.overlay-menu-list a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        overlayMenu.style.display = 'none';
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = href;
+          }, 180);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

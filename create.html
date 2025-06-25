@@ -54,10 +54,66 @@
     <!-- ...existing code... -->
   </footer>
   <div id="overlayMenu" class="overlay-menu" style="display:none;">
-    <!-- ...existing code... -->
+    <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
+    <ul class="overlay-menu-list">
+      <li>
+        <a href="index.html">Home</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="explore.html">Explore</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="create.html">Create</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="communities.html">Communities</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="dashboard.html">Dashboard</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="messages.html">Messages</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="notifications.html">Notifications</a>
+        <span class="plus">+</span>
+      </li>
+    </ul>
   </div>
   <script>
-    // ...existing code...
+    // Simple overlay menu toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const overlayClose = document.getElementById('overlayClose');
+    menuToggle.addEventListener('click', () => {
+      overlayMenu.style.display = 'flex';
+    });
+    overlayClose.addEventListener('click', () => {
+      overlayMenu.style.display = 'none';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') overlayMenu.style.display = 'none';
+    });
+
+    // Ensure overlay closes before navigation for all links
+    document.querySelectorAll('.overlay-menu-list a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        overlayMenu.style.display = 'none';
+        const href = this.getAttribute('href');
+        if (href && href !== '#') {
+          e.preventDefault();
+          setTimeout(() => {
+            window.location.href = href;
+          }, 180);
+        }
+      });
+    });
   </script>
 </body>
 </html>

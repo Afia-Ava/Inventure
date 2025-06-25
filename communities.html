@@ -8,6 +8,112 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* ...existing code... */
+    .community-layout {
+      display: flex;
+      flex-direction: row;
+      gap: 2.5em;
+      align-items: flex-start;
+      min-height: 60vh;
+      width: 100%;
+    }
+    .community-sidebar {
+      width: 220px;
+      min-width: 180px;
+      background: #181c22;
+      border-radius: 1.2em;
+      padding: 2em 1em 1.5em 1em;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
+      box-shadow: 0 1px 8px 0 #0001;
+      height: fit-content;
+    }
+    .community-sidebar-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.3em;
+    }
+    .community-sidebar-list li {
+      color: #bbb;
+      font-size: 1.08em;
+      font-weight: 500;
+      padding: 0.6em 1em 0.6em 0.7em;
+      border-radius: 0.7em;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+      margin-bottom: 0.1em;
+      letter-spacing: 0.1px;
+      user-select: none;
+    }
+    .community-sidebar-list li.active,
+    .community-sidebar-list li:hover {
+      background: #23272f;
+      color: var(--accent-green, #22c55e);
+    }
+    .community-content-panel {
+      flex: 1 1 0;
+      min-width: 0;
+      width: 100%;
+      /* Remove max-width or centering */
+    }
+    #panel-groups .groups-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2em 2em;
+      width: 100%;
+    }
+    #panel-groups .group-card {
+      background: #10141a;
+      border-radius: 1.2em;
+      padding: 2em 1.2em 1.2em 1.2em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 1px 8px 0 #0001;
+      min-height: 180px;
+      min-width: 0;
+      width: 100%;
+    }
+    #panel-groups .group-card img {
+      width: 56px;
+      height: 56px;
+      border-radius: 1em;
+      margin-bottom: 0.7em;
+      object-fit: cover;
+      background: #181c22;
+    }
+    #panel-groups .group-card .group-title {
+      font-weight: 600;
+      color: #fff;
+      text-align: center;
+      font-size: 1.08em;
+    }
+    @media (max-width: 900px) {
+      .community-layout {
+        flex-direction: column;
+      }
+      .community-sidebar {
+        flex-direction: row;
+        width: 100%;
+        min-width: unset;
+        margin-bottom: 1.5em;
+        padding: 1em 0.5em;
+        gap: 0.5em;
+      }
+      .community-content-panel {
+        width: 100%;
+      }
+      #panel-groups .groups-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 1.2em 1em;
+      }
+    }
+  </style>
 </head>
 <body>
   <header class="hero" style="min-height:unset;padding:0;">
@@ -26,54 +132,71 @@
     </nav>
   </header>
   <div class="main-content-bg">
-    <main style="max-width:1100px;margin:7rem auto 4rem auto;padding:0 2vw;">
-      <h1 class="features-title" style="margin-bottom:0.7rem;">🌐 Communities</h1>
-      <div class="features-desc" style="margin-bottom:2.5rem;">Connect and collaborate with other builders.</div>
-      <div class="dashboard-grid">
-        <!-- Left: Groups & Chats -->
-        <aside class="dashboard-sidebar">
-          <section class="dashboard-card">
-            <h2 class="dashboard-card-title">Interest Groups</h2>
-            <p style="color:#bbb;">Join communities around topics you care about.</p>
-            <ul class="dashboard-list">
-              <li>AI & Machine Learning</li>
-              <li>Hardware Hackers</li>
-              <li>Student Founders</li>
-              <li>Design & UX</li>
-              <li>Open Source Builders</li>
-            </ul>
-          </section>
-          <section class="dashboard-card">
-            <h2 class="dashboard-card-title">Coffee Chats</h2>
-            <p style="color:#bbb;">Match with someone new for a quick 1:1 convo.</p>
-            <ul class="dashboard-list">
-              <li>Sign up for next week's Coffee Chat!</li>
-            </ul>
-          </section>
+    <main style="max-width:1200px;margin:7rem auto 4rem auto;padding:0 2vw;">
+      <h1 class="features-title" style="margin-bottom:0.7rem;font-size:2.1rem;font-weight:700;letter-spacing:0.1px;">Communities</h1>
+      <div class="features-desc" style="margin-bottom:2.2rem;color:#888;font-size:1.08rem;">Connect and collaborate with like-minded individuals in your areas of interest.</div>
+      <div class="community-layout">
+        <!-- Sidebar -->
+        <aside class="community-sidebar">
+          <ul class="community-sidebar-list" id="communitySidebarList">
+            <li class="active" data-panel="groups">Groups</li>
+            <li data-panel="people">People</li>
+            <li data-panel="activity">Activity</li>
+            <li data-panel="events">Events</li>
+          </ul>
         </aside>
-        <!-- Right: Events & Check-ins -->
-        <section class="dashboard-main">
-          <section class="dashboard-card" style="margin-bottom:2rem;">
-            <h2 class="dashboard-card-title">Weekly Check-ins</h2>
-            <p style="color:#bbb;">Drop into recurring casual builder calls.</p>
-            <ul class="dashboard-list">
-              <li>Monday Maker Standup – Mondays 7pm UTC</li>
-              <li>Friday Demo Day – Fridays 6pm UTC</li>
-              <li>Weekend Build Sprint – Saturdays 3pm UTC</li>
-            </ul>
+        <!-- Main Content Panel -->
+        <div class="community-content-panel" id="communityContentPanel">
+          <!-- Panels will be shown/hidden by JS -->
+          <section id="panel-groups">
+            <h2 style="font-size:1.18rem;font-weight:700;margin-bottom:1.1em;color:#fff;">Interest Groups</h2>
+            <div class="groups-grid">
+              <div class="group-card">
+                <img src="ai-group.png" alt="AI & Machine Learning" />
+                <div class="group-title">AI & Machine Learning</div>
+              </div>
+              <div class="group-card">
+                <img src="hardware-group.png" alt="Hardware Hackers" />
+                <div class="group-title">Hardware Hackers</div>
+              </div>
+              <div class="group-card">
+                <img src="design-group.png" alt="Design & UX" />
+                <div class="group-title">Design & UX</div>
+              </div>
+              <div class="group-card">
+                <img src="webdev-group.png" alt="Web Development" />
+                <div class="group-title">Web Development</div>
+              </div>
+              <div class="group-card">
+                <img src="mobile-group.png" alt="Mobile App Development" />
+                <div class="group-title">Mobile App Development</div>
+              </div>
+              <div class="group-card">
+                <img src="data-group.png" alt="Data Science" />
+                <div class="group-title">Data Science</div>
+              </div>
+            </div>
           </section>
-          <section class="dashboard-card">
-            <h2 class="dashboard-card-title">Upcoming Community Events</h2>
-            <ul class="dashboard-list">
-              <li>🚀 Hackathon: Build for Good – July 15-17</li>
-              <li>🎤 Fireside Chat: Women in Tech – July 22</li>
-              <li>🛠️ Workshop: Rapid Prototyping – August 5</li>
-              <li>🌱 Green Tech Challenge – August 19-21</li>
-              <li>💡 Idea Jam: Back-to-School Edition – September 2</li>
-            </ul>
+          <section id="panel-people" style="display:none;">
+            <h2 style="font-size:1.18rem;font-weight:700;margin-bottom:1.1em;color:#fff;">People</h2>
+            <div style="color:#bbb;font-size:1.05em;">Discover and connect with other community members. (Coming soon!)</div>
           </section>
-        </section>
+          <section id="panel-activity" style="display:none;">
+            <h2 style="font-size:1.18rem;font-weight:700;margin-bottom:1.1em;color:#fff;">Activity</h2>
+            <div style="color:#bbb;font-size:1.05em;">See what's happening in the community. (Coming soon!)</div>
+          </section>
+          <section id="panel-events" style="display:none;">
+            <h2 style="font-size:1.18rem;font-weight:700;margin-bottom:1.1em;color:#fff;">Upcoming Events</h2>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2em 1.5em;align-items:start;">
+              <div>
+                <div style="color:#888;font-size:0.98em;margin-bottom:0.3em;">October 14, 2024</div>
+                <div style="font-weight:600;color:#fff;margin-bottom:0.3em;">Hackathon: Build for Good</div>
+                <div style="color:#bbb;font-size:0.98em;">Join for a weekend of building solutions for social impact.</div>
+              </div>
+          </div>
+        </div>
       </div>
+      <!-- Remove misplaced footer here -->
     </main>
   </div>
   <footer>
@@ -137,7 +260,7 @@
         <span class="plus">+</span>
       </li>
       <li>
-        <a href="#">Messages</a>
+        <a href="messages.html">Messages</a>
         <span class="plus">+</span>
       </li>
       <li>
@@ -172,6 +295,25 @@
             window.location.href = href;
           }, 180);
         }
+      });
+    });
+
+    // Sidebar tab switching logic
+    document.addEventListener('DOMContentLoaded', function() {
+      const sidebar = document.getElementById('communitySidebarList');
+      const panels = {
+        groups: document.getElementById('panel-groups'),
+        people: document.getElementById('panel-people'),
+        activity: document.getElementById('panel-activity'),
+        events: document.getElementById('panel-events')
+      };
+      sidebar.querySelectorAll('li').forEach(li => {
+        li.addEventListener('click', function() {
+          sidebar.querySelectorAll('li').forEach(x => x.classList.remove('active'));
+          this.classList.add('active');
+          Object.keys(panels).forEach(key => panels[key].style.display = 'none');
+          panels[this.getAttribute('data-panel')].style.display = '';
+        });
       });
     });
   </script>
