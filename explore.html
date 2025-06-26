@@ -16,7 +16,7 @@
         <a href="index.html" style="color:inherit;text-decoration:none;">Inventure</a>
       </div>
       <div class="navbar-actions">
-        <a href="#join" class="join-btn">Join</a>
+        <a href="join.html" class="join-btn">Join</a>
         <button class="menu-icon" id="menuToggle" tabindex="0" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;margin-left:16px;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;height:40px;width:40px;">
           <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
           <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
@@ -28,20 +28,15 @@
   <div class="main-content-bg">
     <main style="max-width:1100px;margin:7rem auto 4rem auto;padding:0 2vw;">
       <h1 class="features-title" style="margin-bottom:0.7rem;font-size:2.1rem;font-weight:700;letter-spacing:0.1px;">Explore</h1>
-      <div class="features-desc" style="margin-bottom:2.2rem;color:#888;font-size:1.08rem;">
-        Discover trending projects, featured builders, and resources to fuel your creativity and innovation.
-      </div>
+      <div class="features-desc" style="margin-bottom:2.2rem;color:#888;font-size:1.08rem;">Discover trending projects, featured builders, and resources to fuel your creativity and innovation.</div>
 
-      <!-- Enhanced Trending Projects Section with improved alignment -->
       <section class="trending-projects-section" style="margin-bottom:3rem;">
         <h2 class="trending-projects-title" style="font-size:2rem;font-weight:700;letter-spacing:0.5px;margin-bottom:0.2em;color:#fff;padding-left:0;">Trending Projects</h2>
         <div class="trending-projects-desc" style="color:#bbb;margin-bottom:1.5em;font-size:1.05em;padding-left:0;">What's being built right now.</div>
-        <!-- Fix the wrapper to properly center the carousel -->
         <div class="trending-carousel-wrapper" style="position:relative;max-width:100%;margin:0 auto;padding:0 3.5em;">
           <div class="trending-carousel" id="trendingCarousel" style="display:flex;align-items:center;justify-content:center;gap:1.8em;overflow:visible;position:relative;">
             <button class="trending-carousel-nav trending-carousel-nav-left" id="trendingPrev" aria-label="Previous projects" style="position:absolute;left:-2.5em;z-index:10;background:#23272f;border:none;border-radius:50%;width:50px;height:50px;color:#fff;font-size:2em;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.3);transition:all 0.2s ease;">&#x2039;</button>
             <div id="trendingCardsContainer" style="display:flex;gap:1.8em;transition:all 0.3s ease-in-out;justify-content:center;padding:0.5em 0;flex-wrap:nowrap;">
-              <!-- Cards will be rendered by JS -->
             </div>
             <button class="trending-carousel-nav" id="trendingNext" aria-label="Next projects" style="position:absolute;right:-2.5em;z-index:10;background:#23272f;border:none;border-radius:50%;width:50px;height:50px;color:#fff;font-size:2em;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,0.3);transition:all 0.2s ease;">&#x203A;</button>
           </div>
@@ -49,7 +44,6 @@
       </section>
       
       <script>
-        // Enhanced Carousel Implementation
         const trendingProjects = [
           {
             img: "project1.jpg",
@@ -78,7 +72,6 @@
           }
         ];
 
-        // Improved Carousel Logic for Reference-Matching UI
         let trendingStartIdx = 0;
         let trendingVisible = window.innerWidth < 768 ? 1 : 3;
 
@@ -100,7 +93,6 @@
               <div class="trending-project-name large" style="font-size:1.25em;font-weight:700;color:#fff;margin-bottom:0.4em;text-align:center;">${p.name}</div>
               <div class="trending-project-desc" style="color:#bbb;font-size:1.05em;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;height:1.3em;">${p.desc}</div>
             `;
-            // Add hover effect
             card.addEventListener('mouseenter', () => {
               card.style.transform = 'translateY(-5px)';
             });
@@ -112,8 +104,6 @@
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-          // Make sure this script runs when the page loads
-          // Check if the carousel elements exist
           if (!document.getElementById('trendingCardsContainer') || 
               !document.getElementById('trendingPrev') || 
               !document.getElementById('trendingNext')) {
@@ -121,10 +111,8 @@
             return;
           }
           
-          // Initialize the carousel
           renderTrendingCarousel();
           
-          // Set up event handlers
           document.getElementById('trendingPrev').onclick = function() {
             trendingStartIdx = (trendingStartIdx - 1 + trendingProjects.length) % trendingProjects.length;
             renderTrendingCarousel();
@@ -135,7 +123,6 @@
             renderTrendingCarousel();
           };
           
-          // Responsive behavior
           window.addEventListener('resize', () => {
             const newVisibleCount = window.innerWidth < 768 ? 1 : 3;
             if (newVisibleCount !== trendingVisible) {
@@ -144,26 +131,21 @@
             }
           });
 
-          // Add hover effect for carousel navigation buttons
-          // Add hover effects for navigation buttons
           const navButtons = document.querySelectorAll('.trending-carousel-nav');
           navButtons.forEach(btn => {
             btn.addEventListener('mouseenter', () => {
               btn.style.background = '#22c55e'; // Change to green on hover
-              // Remove the transform scale that was causing movement
-              // Instead add a subtle box-shadow for emphasis
               btn.style.boxShadow = '0 3px 12px rgba(34, 197, 94, 0.4)';
             });
             
             btn.addEventListener('mouseleave', () => {
-              btn.style.background = '#23272f'; // Back to original color
-              btn.style.boxShadow = '0 3px 12px rgba(0,0,0,0.3)'; // Back to original shadow
+              btn.style.background = '#23272f'; 
+              btn.style.boxShadow = '0 3px 12px rgba(0,0,0,0.3)';
             });
           });
         });
       </script>
 
-      <!-- Idea Library -->
       <section style="margin-bottom:2.5rem;">
         <h2 style="font-size:1.13rem;font-weight:700;margin-bottom:1em;color:#fff;">Idea Library</h2>
         <div style="display:flex;gap:0.7em 1.2em;flex-wrap:wrap;margin-bottom:1.2em;">
@@ -187,7 +169,6 @@
         </div>
       </section>
 
-      <!-- Toolbox -->
       <section>
         <h2 style="font-size:1.13rem;font-weight:700;margin-bottom:1em;color:#fff;">Toolbox</h2>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5em 1.2em;">
@@ -215,15 +196,12 @@
         </div>
         <div class="footer-social">
           <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
-            <!-- Twitter SVG -->
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.924c-.793.352-1.646.59-2.54.698a4.48 4.48 0 0 0 1.964-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03a12.72 12.72 0 0 1-9.23-4.68 4.48 4.48 0 0 0 1.39 5.98A4.44 4.44 0 0 1 2 9.13v.057a4.48 4.48 0 0 0 3.6 4.39c-.4.11-.82.17-1.25.17-.31 0-.6-.03-.89-.08a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.07a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.77 0-.19 0-.37-.01-.56A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.6.71Z"/></svg>
           </a>
           <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
-            <!-- LinkedIn SVG -->
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.47-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/></svg>
           </a>
           <a href="mailto:hello@inventure.com" aria-label="Email">
-            <!-- Email SVG -->
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4v-9.99l8 6.99 8-6.99V18z"/></svg>
           </a>
         </div>
@@ -278,7 +256,6 @@
     </ul>
   </div>
   <script>
-    // Simple overlay menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const overlayMenu = document.getElementById('overlayMenu');
     const overlayClose = document.getElementById('overlayClose');
@@ -292,57 +269,6 @@
       if (e.key === 'Escape') overlayMenu.style.display = 'none';
     });
 
-    // Ensure overlay closes before navigation for all links
-    document.querySelectorAll('.overlay-menu-list a').forEach(link => {
-      link.addEventListener('click', function(e) {
-        overlayMenu.style.display = 'none';
-        const href = this.getAttribute('href');
-        if (href && href !== '#') {
-          e.preventDefault();
-          setTimeout(() => {
-            window.location.href = href;
-          }, 180);
-        }
-      });
-    });
-  </script>
-</body>
-</html>
-      </li>
-      <li>
-        <a href="communities.html">Communities</a>
-        <span class="plus">+</span>
-      </li>
-      <li>
-        <a href="dashboard.html">Dashboard</a>
-        <span class="plus">+</span>
-      </li>
-      <li>
-        <a href="messages.html">Messages</a>
-        <span class="plus">+</span>
-      </li>
-      <li>
-        <a href="notifications.html">Notifications</a>
-        <span class="plus">+</span>
-      </li>
-    </ul>
-  </div>
-  <script>
-    // Simple overlay menu toggle
-    const menuToggle = document.getElementById('menuToggle');
-    const overlayMenu = document.getElementById('overlayMenu');
-    const overlayClose = document.getElementById('overlayClose');
-    menuToggle.addEventListener('click', () => {
-      overlayMenu.style.display = 'flex';
-    });
-    overlayClose.addEventListener('click', () => {
-      overlayMenu.style.display = 'none';
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') overlayMenu.style.display = 'none';
-    });
-
-    // Ensure overlay closes before navigation for all links
     document.querySelectorAll('.overlay-menu-list a').forEach(link => {
       link.addEventListener('click', function(e) {
         overlayMenu.style.display = 'none';

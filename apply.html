@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply – Inventure</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .apply-container {
+      max-width: 600px;
+      margin: 7rem auto 4rem auto;
+      background: #181c22;
+      border-radius: 1.2em;
+      box-shadow: 0 2px 16px 0 #0002;
+      padding: 2.5em 2em 2em 2em;
+      color: #fff;
+    }
+    .apply-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 0.5em;
+      color: #fff;
+      letter-spacing: 0.5px;
+    }
+    .apply-section-title {
+      font-size: 1.13rem;
+      font-weight: 700;
+      margin-top: 2.2em;
+      margin-bottom: 1em;
+      color: #22c55e;
+    }
+    .apply-form label {
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.2em;
+      display: block;
+      font-size: 1.05em;
+    }
+    .apply-form input,
+    .apply-form textarea,
+    .apply-form select {
+      width: 100%;
+      padding: 0.7em 1em;
+      border-radius: 1em;
+      border: 1px solid #23272f;
+      background: #10141a;
+      color: #fff;
+      font-size: 1em;
+      margin-bottom: 1.2em;
+      resize: vertical;
+      box-sizing: border-box;
+    }
+    .apply-form textarea {
+      min-height: 60px;
+      max-height: 200px;
+    }
+    .apply-form .apply-checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7em 1.2em;
+      margin-bottom: 1.2em;
+    }
+    .apply-form .apply-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      background: #23272f;
+      border-radius: 1.2em;
+      padding: 0.4em 1.1em;
+      color: #bbb;
+      font-weight: 500;
+      font-size: 1em;
+      cursor: pointer;
+      user-select: none;
+    }
+    .apply-form .apply-checkbox-label input[type="checkbox"] {
+      accent-color: #22c55e;
+      margin: 0;
+    }
+    .apply-form .apply-radio-group {
+      display: flex;
+      gap: 1.5em;
+      margin-bottom: 1.2em;
+    }
+    .apply-form .apply-radio-label {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      color: #bbb;
+      font-weight: 500;
+      font-size: 1em;
+      cursor: pointer;
+      user-select: none;
+    }
+    .apply-form .apply-radio-label input[type="radio"] {
+      accent-color: #22c55e;
+      margin: 0;
+    }
+    .apply-form .apply-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.7em;
+      margin-bottom: 1.5em;
+      color: #bbb;
+      font-size: 0.98em;
+    }
+    .apply-form .apply-submit-btn {
+      background: var(--accent-green, #22c55e);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 1.2em;
+      padding: 0.9em 2.2em;
+      font-size: 1.15em;
+      border: none;
+      cursor: pointer;
+      transition: background 0.18s;
+      box-shadow: 0 1px 8px 0 #0001;
+      margin-top: 0.7em;
+    }
+    .apply-form .apply-submit-btn:hover {
+      background: #16a34a;
+    }
+    .apply-form .apply-note {
+      color: #888;
+      font-size: 0.98em;
+      margin-bottom: 1.2em;
+    }
+    @media (max-width: 700px) {
+      .apply-container {
+        padding: 1.2em 0.7em 1em 0.7em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" style="min-height:unset;padding:0;">
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" style="color:inherit;text-decoration:none;">Inventure</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="join.html" class="join-btn">Back</a>
+        <button class="menu-icon" id="menuToggle" tabindex="0" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;margin-left:16px;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;height:40px;width:40px;">
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <div class="main-content-bg">
+    <div class="apply-container">
+      <div class="apply-title">📝 Inventure Application Form</div>
+      <form class="apply-form" id="applyForm" autocomplete="off">
+        <!-- Basic Info -->
+        <div class="apply-section-title">🔹 Basic Info</div>
+        <label for="name">Full Name <span class="apply-note">(required)</span></label>
+        <input type="text" id="name" name="name" required placeholder="Your full name" />
+
+        <label for="email">Email Address <span class="apply-note">(required, used to send acceptance + account link)</span></label>
+        <input type="email" id="email" name="email" required placeholder="you@email.com" />
+
+        <label for="age">Age <span class="apply-note">(required, helps with cohort grouping or events)</span></label>
+        <input type="number" id="age" name="age" min="10" max="120" required placeholder="Your age" />
+
+        <label for="location">Where are you based? <span class="apply-note">(required, City/State or Country — helps with local hubs)</span></label>
+        <input type="text" id="location" name="location" required placeholder="e.g. San Francisco, CA or Germany" />
+
+        <label for="socials">Socials / Website / GitHub / LinkedIn <span class="apply-note">(required, helps us get to know you — just one or two links)</span></label>
+        <input type="text" id="socials" name="socials" required placeholder="Paste a link (GitHub, LinkedIn, website, etc.)" />
+
+        <!-- Builder Signal Questions -->
+        <div class="apply-section-title">🔹 Builder Signal Questions</div>
+        <label for="building">What are you building (or dreaming of building)?</label>
+        <textarea id="building" name="building" required placeholder="Open-ended — 1–2 sentences is fine."></textarea>
+
+        <label for="why">Why do you want to join Inventure?</label>
+        <textarea id="why" name="why" required placeholder="What are you looking for: collabs, community, motivation, learning?"></textarea>
+
+        <label for="link">Link to something you've made <span class="apply-note">(optional, but preferred)</span></label>
+        <input type="url" id="link" name="link" placeholder="Notion, GitHub, website, video, Figma, etc." />
+
+        <!-- Community Fit -->
+        <div class="apply-section-title">🔹 Community Fit</div>
+        <label style="margin-bottom:0.7em;">
+          Which best describes you? <span class="apply-note">(Select all that apply)</span>
+        </label>
+        <div class="apply-checkbox-group" style="display:flex;flex-direction:column;gap:0.3em;margin-bottom:2em;align-items:flex-start;">
+          <label class="apply-checkbox-label" style="align-items:center;gap:0.7em;padding:0.3em 0;margin-left:0;width:auto;justify-content:flex-start;">
+            <input type="checkbox" name="fit" value="Hacker" style="margin-left:0;" />
+            <span style="font-weight:600;">Hacker</span>
+          </label>
+          <label class="apply-checkbox-label" style="align-items:center;gap:0.7em;padding:0.3em 0;margin-left:0;width:auto;justify-content:flex-start;">
+            <input type="checkbox" name="fit" value="Maker" style="margin-left:0;" />
+            <span style="font-weight:600;">Maker</span>
+          </label>
+          <label class="apply-checkbox-label" style="align-items:center;gap:0.7em;padding:0.3em 0;margin-left:0;width:auto;justify-content:flex-start;">
+            <input type="checkbox" name="fit" value="Founder" style="margin-left:0;" />
+            <span style="font-weight:600;">Founder</span>
+          </label>
+          <label class="apply-checkbox-label" style="align-items:center;gap:0.7em;padding:0.3em 0;margin-left:0;width:auto;justify-content:flex-start;">
+            <input type="checkbox" name="fit" value="Designer" style="margin-left:0;" />
+            <span style="font-weight:600;">Designer</span>
+          </label>
+          <label class="apply-checkbox-label" style="align-items:center;gap:0.7em;padding:0.3em 0;margin-left:0;width:auto;justify-content:flex-start;">
+            <input type="checkbox" name="fit" value="Storyteller" style="margin-left:0;" />
+            <span style="font-weight:600;">Storyteller</span>
+          </label>
+          <label class="apply-checkbox-label" style="align-items:center;gap:0.7em;padding:0.3em 0;margin-left:0;width:auto;justify-content:flex-start;">
+            <input type="checkbox" name="fit" value="Explorer" style="margin-left:0;" />
+            <span style="font-weight:600;">Explorer</span>
+          </label>
+        </div>
+        <label style="margin-bottom:0.7em;">Are you open to 1:1 coffee chats with other members?</label>
+        <div class="apply-radio-group">
+          <label class="apply-radio-label"><input type="radio" name="coffee" value="Yes" required />Yes</label>
+          <label class="apply-radio-label"><input type="radio" name="coffee" value="No" />No</label>
+          <label class="apply-radio-label"><input type="radio" name="coffee" value="Maybe" />Maybe</label>
+        </div>
+
+        <!-- Final -->
+        <div class="apply-section-title">🔹 Final</div>
+        <label for="extra">Anything else we should know? <span class="apply-note">(Optional: Fun facts, goals, how you heard about us, etc.)</span></label>
+        <textarea id="extra" name="extra"></textarea>
+
+        <div class="apply-consent" style="align-items:center;">
+          <input type="checkbox" id="consent" name="consent" required style="margin-top:2px;margin-left:0;width:auto;" />
+          <label for="consent" style="font-weight:400;text-align:left;padding:0;margin:0;">
+            I understand that Inventure is a curated space and I may not be accepted if it’s not the right fit right now.
+          </label>
+        </div>
+
+        <button type="submit" class="apply-submit-btn">Submit Application</button>
+      </form>
+      <div id="applySuccess" style="display:none;color:#22c55e;font-weight:600;margin-top:1.5em;text-align:center;">
+        Thank you for applying! We’ll review your application soon.
+      </div>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">
+          Inventure
+        </div>
+        <div class="footer-social">
+          <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.924c-.793.352-1.646.59-2.54.698a4.48 4.48 0 0 0 1.964-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03a12.72 12.72 0 0 1-9.23-4.68 4.48 4.48 0 0 0 1.39 5.98A4.44 4.44 0 0 1 2 9.13v.057a4.48 4.48 0 0 0 3.6 4.39c-.4.11-.82.17-1.25.17-.31 0-.6-.03-.89-.08a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.07a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.77 0-.19 0-.37-.01-.56A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.6.71Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.47-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/></svg>
+          </a>
+          <a href="mailto:hello@inventure.com" aria-label="Email">
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4v-9.99l8 6.99 8-6.99V18z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#join">Join</a>
+      </nav>
+      <div class="footer-contact">
+        <span><strong>Contact:</strong></span>
+        <span>Email: <a href="mailto:hello@inventure.com">hello@inventure.com</a></span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Inventure. All rights reserved.
+    </div>
+  </footer>
+  <div id="overlayMenu" class="overlay-menu" style="display:none;">
+    <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
+    <ul class="overlay-menu-list">
+      <li>
+        <a href="index.html">Home</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="explore.html">Explore</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="create.html">Create</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="communities.html">Communities</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="dashboard.html">Dashboard</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="messages.html">Messages</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="notifications.html">Notifications</a>
+        <span class="plus">+</span>
+      </li>
+    </ul>
+  </div>
+  <script>
+    // Overlay menu logic (unchanged)
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const overlayClose = document.getElementById('overlayClose');
+    menuToggle.addEventListener('click', () => {
+      overlayMenu.style.display = 'flex';
+    });
+    overlayClose.addEventListener('click', () => {
+      overlayMenu.style.display = 'none';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') overlayMenu.style.display = 'none';
+    });
+    document.querySelectorAll('.overlay-menu-list a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        overlayMenu.style.display = 'none';
+      });
+    });
+
+    // Prevent default submit for demo
+    document.getElementById('applyForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const data = Object.fromEntries(new FormData(form).entries());
+      // Handle checkboxes (fit) as array
+      data.fit = Array.from(form.querySelectorAll('input[name="fit"]:checked')).map(cb => cb.value);
+      data.consent = !!form.querySelector('input[name="consent"]:checked');
+      try {
+        const resp = await fetch('http://localhost:3001/submit-application', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (resp.ok) {
+          form.style.display = 'none';
+          document.getElementById('applySuccess').style.display = '';
+        } else {
+          alert('There was an error submitting your application.');
+        }
+      } catch {
+        alert('Could not connect to server.');
+      }
+    });
+  </script>
+</body>
+</html>

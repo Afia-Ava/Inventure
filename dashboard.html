@@ -10,14 +10,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Navbar (identical to home page, with Dashboard link highlighted) -->
   <header class="hero" style="min-height:unset;padding:0;">
     <nav class="navbar">
       <div class="logo">
         <a href="index.html" style="color:inherit;text-decoration:none;">Inventure</a>
       </div>
       <div class="navbar-actions">
-        <a href="#join" class="join-btn">Join</a>
+        <a href="join.html" class="join-btn">Join</a>
         <button class="menu-icon" id="menuToggle" tabindex="0" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;margin-left:16px;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;height:40px;width:40px;">
           <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
           <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
@@ -26,7 +25,6 @@
       </div>
     </nav>
   </header>
-  <!-- Dashboard Main Content -->
   <div class="main-content-bg">
     <main style="max-width:1100px;margin:7rem auto 4rem auto;padding:0 2vw;">
       <h1 class="features-title" style="margin-bottom:0.7rem;">Dashboard</h1>
@@ -179,7 +177,6 @@
           }, 180);
           return;
         }
-        // Open notifications.html if Notifications is clicked
         if (this.textContent.trim().startsWith('Notifications')) {
           e.preventDefault();
           setTimeout(() => {
@@ -187,7 +184,6 @@
           }, 180);
           return;
         }
-        // Open index.html if Home is clicked
         if (this.textContent.trim().startsWith('Home')) {
           e.preventDefault();
           setTimeout(() => {

@@ -518,15 +518,12 @@
         </div>
         <div class="footer-social">
           <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
-            <!-- Twitter SVG -->
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.924c-.793.352-1.646.59-2.54.698a4.48 4.48 0 0 0 1.964-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03a12.72 12.72 0 0 1-9.23-4.68 4.48 4.48 0 0 0 1.39 5.98A4.44 4.44 0 0 1 2 9.13v.057a4.48 4.48 0 0 0 3.6 4.39c-.4.11-.82.17-1.25.17-.31 0-.6-.03-.89-.08a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.07a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.77 0-.19 0-.37-.01-.56A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.6.71Z"/></svg>
           </a>
           <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
-            <!-- LinkedIn SVG -->
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.47-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/></svg>
           </a>
           <a href="mailto:hello@inventure.com" aria-label="Email">
-            <!-- Email SVG -->
             <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4v-9.99l8 6.99 8-6.99V18z"/></svg>
           </a>
         </div>
@@ -581,7 +578,6 @@
     </ul>
   </div>
   <script>
-    // --- Demo Data ---
     const currentUser = "You";
     const users = [
       { name: "You", avatar: "avatar-you.jpg", location: "SF" },
@@ -591,17 +587,12 @@
       { name: "Liam", avatar: "avatar-liam.jpg", location: "London" },
       { name: "Chloe", avatar: "avatar-chloe.jpg", location: "Berlin" }
     ];
-    // Each DM is {users: [user1, user2], messages: [{from, text, ts}]}
-    let dms = []; // Start with no chats
-    // Each group is {name, members, pinned, updates, threads}
-    let groups = []; // Start with no groups
-    // --- UI State ---
-    let selectedChat = null; // {type: 'dm', users: [..]} or {type: 'group', name: ...}
-    // --- Render Functions ---
+    let dms = []; 
+    let groups = []; 
+    let selectedChat = null; 
     function renderCombinedSlidebar() {
       const slidebar = document.getElementById('slidebarCombined');
       slidebar.innerHTML = '';
-      // Only show users with whom a DM exists
       dms.forEach(dm => {
         const other = dm.users.find(u => u !== currentUser);
         const u = users.find(x => x.name === other);
@@ -621,14 +612,12 @@
         `;
         slidebar.appendChild(div);
       });
-      // Divider
       if (dms.length > 0 && groups.length > 0) {
         const divider = document.createElement('div');
         divider.style.margin = "0.7em 0 0.3em 0";
         divider.style.borderTop = "1px solid #23272f";
         slidebar.appendChild(divider);
       }
-      // Only show groups if any exist
       groups.forEach(g => {
         const isActive = selectedChat && selectedChat.type === 'group' && selectedChat.name === g.name;
         const div = document.createElement('div');
@@ -684,7 +673,6 @@
             </div>
           `;
         });
-        // Threads
         const threads = document.getElementById('groupThreads');
         threads.innerHTML = '';
         g.threads.forEach(t => {
@@ -697,7 +685,6 @@
         });
       }
     }
-    // --- Actions ---
     function startDM(name) {
       if (name === currentUser) return;
       if (!dms.find(dm => dm.users.includes(name))) {
@@ -715,7 +702,6 @@
       renderCombinedSlidebar();
       renderChat();
     }
-    // --- Send Message ---
     document.addEventListener('DOMContentLoaded', function() {
       renderCombinedSlidebar();
       renderChat();
@@ -733,10 +719,8 @@
         if (e.key === 'Enter') document.getElementById('sendBtn').click();
       });
     });
-    // ...existing overlay menu code...
   </script>
   <script>
-    // Simple overlay menu toggle
     const menuToggle = document.getElementById('menuToggle');
     const overlayMenu = document.getElementById('overlayMenu');
     const overlayClose = document.getElementById('overlayClose');
@@ -750,7 +734,6 @@
       if (e.key === 'Escape') overlayMenu.style.display = 'none';
     });
 
-    // Ensure overlay closes before navigation for all links
     document.querySelectorAll('.overlay-menu-list a').forEach(link => {
       link.addEventListener('click', function(e) {
         overlayMenu.style.display = 'none';

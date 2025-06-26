@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Join – Inventure</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    .join-main-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 2vw;
+    }
+    .join-hero {
+      padding: 6rem 0 3rem 0;
+      text-align: left;
+    }
+    .join-hero-headline {
+      font-size: 2.7rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+    .join-hero-sub {
+      font-size: 1.25rem;
+      color: #bbb;
+      margin-bottom: 1.7rem;
+      max-width: 520px;
+    }
+    .join-hero-apply {
+      display: inline-block;
+      background: var(--accent-green, #22c55e);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 1.2em;
+      padding: 0.9em 2.2em;
+      font-size: 1.15em;
+      text-decoration: none;
+      margin-bottom: 0.5em;
+      transition: background 0.18s;
+      box-shadow: 0 1px 8px 0 #0001;
+    }
+    .join-hero-apply:hover {
+      background: #16a34a;
+    }
+    .join-flex-row {
+      display: flex;
+      gap: 3.5em;
+      margin: 3.5rem 0 2.5rem 0;
+      align-items: flex-start;
+    }
+    .join-who, .join-access {
+      flex: 1 1 0;
+      min-width: 260px;
+    }
+    .join-who-title, .join-access-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.1em;
+    }
+    .join-who-list, .join-access-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7em;
+      margin-bottom: 0.7em;
+    }
+    .join-who-item, .join-access-item {
+      font-size: 1.08em;
+      color: #bbb;
+      display: flex;
+      align-items: center;
+      gap: 0.7em;
+      background: #181c22;
+      border-radius: 1.2em;
+      padding: 0.5em 1.3em;
+      font-weight: 500;
+      box-shadow: 0 1px 8px 0 #0001;
+    }
+    .join-who-or {
+      color: #bbb;
+      font-size: 1.08em;
+      margin-top: 1em;
+    }
+    .join-how-section {
+      display: flex;
+      gap: 3.5em;
+      margin: 3.5rem 0 2.5rem 0;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+    .join-testimonial, .join-form-section {
+      background: #181c22;
+      border-radius: 1.2em;
+      padding: 2em 2em 1.5em 2em;
+      color: #fff;
+      box-shadow: 0 1px 8px 0 #0001;
+      flex: 1 1 320px;
+      min-width: 260px;
+      max-width: 480px;
+      margin-bottom: 1.5em;
+    }
+    .join-testimonial-quote {
+      font-size: 1.15em;
+      font-style: italic;
+      margin-bottom: 0.7em;
+      color: #fff;
+    }
+    .join-testimonial-author {
+      color: #bbb;
+      font-size: 1em;
+      font-weight: 500;
+    }
+    .join-form-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 1.2em;
+      color: #fff;
+    }
+    .join-form-link {
+      display: inline-block;
+      background: var(--accent-green, #22c55e);
+      color: #fff;
+      font-weight: 700;
+      border-radius: 1.2em;
+      padding: 0.8em 2em;
+      font-size: 1.08em;
+      text-decoration: none;
+      margin-top: 0.7em;
+      transition: background 0.18s;
+      box-shadow: 0 1px 8px 0 #0001;
+    }
+    .join-form-link:hover {
+      background: #16a34a;
+    }
+    .join-faq {
+      margin: 3.5rem 0 2.5rem 0;
+      max-width: 700px;
+    }
+    .join-faq-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.1em;
+    }
+    .join-faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2em;
+    }
+    .join-faq-q {
+      color: #22c55e;
+      font-weight: 600;
+      margin-bottom: 0.2em;
+    }
+    .join-faq-a {
+      color: #bbb;
+      font-size: 1em;
+    }
+    @media (max-width: 900px) {
+      .join-flex-row, .join-how-section {
+        flex-direction: column;
+        gap: 2em;
+      }
+    }
+    @media (max-width: 700px) {
+      .join-main-container {
+        padding: 0 1em;
+      }
+      .join-hero, .join-section {
+        padding: 0 0;
+      }
+      .join-testimonial, .join-form-section {
+        padding: 1.2em 1em 1em 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero" style="min-height:unset;padding:0;">
+    <nav class="navbar">
+      <div class="logo">
+        <a href="index.html" style="color:inherit;text-decoration:none;">Inventure</a>
+      </div>
+      <div class="navbar-actions">
+        <a href="#apply" class="join-btn">Apply</a>
+        <button class="menu-icon" id="menuToggle" tabindex="0" aria-label="Open menu" style="background:none;border:none;cursor:pointer;padding:0;margin-left:16px;display:inline-flex;flex-direction:column;justify-content:center;align-items:center;height:40px;width:40px;">
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+          <span style="display:block;width:24px;height:3px;background:#fff;border-radius:2px;margin:3px 0;"></span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <div class="main-content-bg">
+    <div class="join-main-container">
+      <!-- Hero Section -->
+      <section class="join-hero" style="padding-top:10rem;">
+        <div class="join-hero-headline">
+          🔥 Build with the Best.<br>
+          <span style="font-weight:600;color:#bbb;font-size:1.4rem;">
+            A space for young builders, founders, and doers.
+          </span>
+        </div>
+        <div class="join-hero-sub" style="white-space:nowrap;">
+          Apply to join a curated community of people building what matters.
+        </div>
+        <a href="apply.html" class="join-hero-apply">→ Apply Now</a>
+      </section>
+
+      <!-- Who & What Side by Side -->
+      <div class="join-flex-row">
+        <!-- Who It's For -->
+        <section class="join-who">
+          <div class="join-who-title">You should apply if you're a...</div>
+          <div class="join-who-list">
+            <div class="join-who-item">🤖 Hacker building AI tools or apps</div>
+            <div class="join-who-item">🔧 Maker prototyping hardware</div>
+            <div class="join-who-item">🎨 Designer crafting beautiful products</div>
+            <div class="join-who-item">🚀 Founder launching your first idea</div>
+            <div class="join-who-item">📹 Storyteller creating unique content</div>
+            <div class="join-who-item">🧭 Explorer just figuring it out</div>
+          </div>
+        </section>
+        <!-- What You'll Get Access To -->
+        <section class="join-access">
+          <div class="join-access-title">What you’ll get access to:</div>
+          <div class="join-access-list">
+            <div class="join-access-item">✅ Weekly builder check-ins</div>
+            <div class="join-access-item">🤝 1:1 coffee chats with other makers</div>
+            <div class="join-access-item">🔥 A private feed of real-time builds</div>
+            <div class="join-access-item">🧰 Tools, templates, and launch support</div>
+            <div class="join-access-item">🏁 Challenges and spotlights</div>
+            <div class="join-access-item">🌎 IRL meetups (in select cities)</div>
+          </div>
+        </section>
+      </div>
+
+      <!-- FAQ -->
+      <section class="join-faq">
+        <div class="join-faq-title">FAQ</div>
+        <div class="join-faq-list">
+          <div>
+            <div class="join-faq-q">Is it free?</div>
+            <div class="join-faq-a">Yes! There’s no cost to join or participate.</div>
+          </div>
+          <div>
+            <div class="join-faq-q">Who gets in?</div>
+            <div class="join-faq-a">We’re looking for young people (typically 16+) who are actively building, learning, or launching something — or want to start!</div>
+          </div>
+          <div>
+            <div class="join-faq-q">How long does it take to hear back?</div>
+            <div class="join-faq-a">We review applications weekly and aim to respond within 7 days.</div>
+          </div>
+        </div>
+        <a href="apply.html" class="join-hero-apply" style="margin-top:2.5em;">→ Apply Now</a>
+      </section>
+    </div>
+  </div>
+  <footer>
+    <div class="footer-container">
+      <div>
+        <div class="footer-logo">
+          Inventure
+        </div>
+        <div class="footer-social">
+          <a href="https://twitter.com/" target="_blank" aria-label="Twitter">
+            <!-- Twitter SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M22 5.924c-.793.352-1.646.59-2.54.698a4.48 4.48 0 0 0 1.964-2.475 8.94 8.94 0 0 1-2.828 1.082A4.48 4.48 0 0 0 11.07 9.03a12.72 12.72 0 0 1-9.23-4.68 4.48 4.48 0 0 0 1.39 5.98A4.44 4.44 0 0 1 2 9.13v.057a4.48 4.48 0 0 0 3.6 4.39c-.4.11-.82.17-1.25.17-.31 0-.6-.03-.89-.08a4.48 4.48 0 0 0 4.18 3.11A8.98 8.98 0 0 1 2 19.07a12.7 12.7 0 0 0 6.88 2.02c8.26 0 12.78-6.84 12.78-12.77 0-.19 0-.37-.01-.56A9.1 9.1 0 0 0 24 4.59a8.93 8.93 0 0 1-2.6.71Z"/></svg>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" aria-label="LinkedIn">
+            <!-- LinkedIn SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-9h3v9zm-1.5-10.28c-.97 0-1.75-.79-1.75-1.75s.78-1.75 1.75-1.75 1.75.79 1.75 1.75-.78 1.75-1.75 1.75zm15.5 10.28h-3v-4.5c0-1.1-.9-2-2-2s-2 .9-2 2v4.5h-3v-9h3v1.22c.41-.72 1.47-1.22 2.5-1.22 1.93 0 3.5 1.57 3.5 3.5v5.5z"/></svg>
+          </a>
+          <a href="mailto:hello@inventure.com" aria-label="Email">
+            <!-- Email SVG -->
+            <svg width="22" height="22" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4v-9.99l8 6.99 8-6.99V18z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav class="footer-nav">
+        <a href="#features">Features</a>
+        <a href="#community">Community</a>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#join">Join</a>
+      </nav>
+      <div class="footer-contact">
+        <span><strong>Contact:</strong></span>
+        <span>Email: <a href="mailto:hello@inventure.com">hello@inventure.com</a></span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Inventure. All rights reserved.
+    </div>
+  </footer>
+  <div id="overlayMenu" class="overlay-menu" style="display:none;">
+    <button class="overlay-close" id="overlayClose" aria-label="Close menu">&times;</button>
+    <ul class="overlay-menu-list">
+      <li>
+        <a href="index.html">Home</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="explore.html">Explore</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="create.html">Create</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="communities.html">Communities</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="dashboard.html">Dashboard</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="messages.html">Messages</a>
+        <span class="plus">+</span>
+      </li>
+      <li>
+        <a href="notifications.html">Notifications</a>
+        <span class="plus">+</span>
+      </li>
+    </ul>
+  </div>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const overlayMenu = document.getElementById('overlayMenu');
+    const overlayClose = document.getElementById('overlayClose');
+    menuToggle.addEventListener('click', () => {
+      overlayMenu.style.display = 'flex';
+    });
+    overlayClose.addEventListener('click', () => {
+      overlayMenu.style.display = 'none';
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') overlayMenu.style.display = 'none';
+    });
+    document.querySelectorAll('.overlay-menu-list a').forEach(link => {
+      link.addEventListener('click', function(e) {
+        overlayMenu.style.display = 'none';
+      });
+    });
+  </script>
+</body>
+</html>
